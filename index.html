@@ -1,105 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Leaflet!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet!</title>
 
-	<!-- Leaflet’s custom CSS -->
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-	integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-	crossorigin=""/>
+    <!-- Leaflet’s custom CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
-	<!-- Leaflet’s custom JS -->
-	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-	integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-	crossorigin=""></script>
+    <!-- Leaflet’s custom JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-	<style>
-		/* START CSS */
+    <style>
+        /* START CSS */
 
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-		#map {
-			height: 100dvh;
-		}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-		.leaflet-popup-tip {
-			background-color: blue;
-		}
-		.leaflet-popup-content {
-			color: purple;
-			font-size: 14px;
-			text-align: center;
-			font-family: monospace;
-		}
-		.leaflet-popup-content-wrapper {
-		background: #EEAECA;
-		background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);			
-		border-style: dotted;
-		padding: 5px;
+        #map {
+            height: 100dvh;
+        }
 
-		}
+        .leaflet-popup-tip {
+            background-color: blue;
+        }
 
-		/* END CSS */
-	</style>
+        .leaflet-popup-content {
+            color: purple;
+            font-size: 14px;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .leaflet-popup-content-wrapper {
+            background: #EEAECA;
+            background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+            border-style: dotted;
+            padding: 5px;
+
+        }
+
+        /* END CSS */
+    </style>
 
 </head>
+
 <body>
-	
-	<!-- The map container element -->
-	<div id="map"></div>
 
-	<script>
-		// START JS
+    <!-- The map container element -->
+    <div id="map"></div>
 
-		// Initialize a map with two values:
-		// - An array with lat/long coordinates
-		// - Number for zoom level
-		var map = L.map('map').setView([41.825,-71.3999], 15);
-		
+    <script>
+        // START JS
 
-		// Load in data from openstreetmap.org
-		L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			maxZoom: 25,
-			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-		}).addTo(map);
+        // Initialize a map with two values:
+        // - An array with lat/long coordinates
+        // - Number for zoom level
+        var map = L.map('map').setView([41.825, -71.3999], 15);
 
-            var marker1 = L.marker([41.82311862558744, -71.40647574341288]).addTo(map);
-            var marker2 = L.marker([41.82268192241229, -71.40581303159577]).addTo(map);
-            var marker3 = L.marker([41.82654167498458, -71.40904619976135]).addTo(map);
-            var marker4 = L.marker([41.82634386378081, -71.40882556139451]).addTo(map);
-            var marker5 = L.marker([41.826388793040564, -71.40815066978756
-]).addTo(map);
-		// NEW CODE!
 
-		// Bind popups to the shapes from before
-		marker1.bindPopup("<b>Industrial Design!</b><br>Beep Boop");
+        // Load in data from openstreetmap.org
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 25,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        var marker1 = L.marker([41.82311862558744, -71.40647574341288]).addTo(map);
+        var marker2 = L.marker([41.82268192241229, -71.40581303159577]).addTo(map);
+        var marker3 = L.marker([41.82654167498458, -71.40904619976135]).addTo(map);
+        var marker4 = L.marker([41.82634386378081, -71.40882556139451]).addTo(map);
+        var marker5 = L.marker([41.826388793040564, -71.40815066978756]).addTo(map);
+        // NEW CODE!
+
+        // Bind popups to the shapes from before
+        marker1.bindPopup("<b>Industrial Design!</b><br>Beep Boop");
         marker2.bindPopup("<b>Architecture!</b><br>Redbull.");
         marker3.bindPopup("<b>Illustration!</b><br>:3");
         marker4.bindPopup("<b>Graphic Design!</b><br>Cool stickers");
         marker5.bindPopup("<b>Graphic Design!</b><br>Infinite Aura");
 
 
-		// Create a popup variable attached to our map from before
-		var popup = L.popup();
+        // Create a popup variable attached to our map from before
+        var popup = L.popup();
 
-		// Function to show coordinates when somewhere is clicked
-		function onMapClick(e) {
-			popup
-				.setLatLng(e.latlng)
-					.setContent("WHERE IS SCROTIE")
-				.openOn(map);
-		}
+        // Function to show coordinates when somewhere is clicked
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("WHERE IS SCROTIE")
+                .openOn(map);
+        }
 
-		// Run function when map is clicked
-		map.on('click', onMapClick);
+        // Run function when map is clicked
+        map.on('click', onMapClick);
 
-		// END JS
-	</script>
+        // END JS
+    </script>
 
 </body>
+
 </html>
