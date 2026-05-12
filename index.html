@@ -71,7 +71,13 @@
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        var marker1 = L.marker([41.82311862558744, -71.40647574341288]).addTo(map);
+        var marker1 = L.circle([41.82311862558744, -71.40647574341288], {
+            color: 'green',
+			fillColor: 'green',
+			fillOpacity: 0.5,
+			radius: 40})
+        .addTo(map);
+
         var marker2 = L.marker([41.82268192241229, -71.40581303159577]).addTo(map);
         var marker3 = L.marker([41.82654167498458, -71.40904619976135]).addTo(map);
         var marker4 = L.marker([41.82634386378081, -71.40882556139451]).addTo(map);
